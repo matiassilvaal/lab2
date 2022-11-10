@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/config-service/config-service.iml" filepath="$PROJECT_DIR$/config-service/config-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/data-service/data-service.iml" filepath="$PROJECT_DIR$/data-service/data-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/empleado-service/empleado-service.iml" filepath="$PROJECT_DIR$/empleado-service/empleado-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/data-service/eureka-service/eureka-service.iml" filepath="$PROJECT_DIR$/data-service/eureka-service/eureka-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-service/eureka-service.iml" filepath="$PROJECT_DIR$/eureka-service/eureka-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/gateway-service/gateway-service.iml" filepath="$PROJECT_DIR$/gateway-service/gateway-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/justificativo-service/justificativo-service.iml" filepath="$PROJECT_DIR$/justificativo-service/justificativo-service.iml" />
     </modules>
