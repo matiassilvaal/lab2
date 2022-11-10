@@ -20,7 +20,6 @@ public class JustificativoEntity {
     private Long id;
 
     private Long idData;
-    private Long idEmpleado;
-    private Boolean justificado;
+    private String rut;
 }
 
