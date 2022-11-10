@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: data-service
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8081
+  datasource:
+    url: jdbc:mysql://localhost:3306/lab2data
+    username: root
+    password: Leche0123456!
+  jpa:
+    hibernate:
+      ddl-auto: update

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: justificativo-service
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8084
+  datasource:
+    url: jdbc:mysql://localhost:3306/lab2justificativos
+    username: root
+    password: Leche0123456!
+  jpa:
+    hibernate:
+      ddl-auto: update
