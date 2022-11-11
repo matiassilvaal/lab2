@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/calcularplanilla-service/calcularplanilla-service.iml" filepath="$PROJECT_DIR$/calcularplanilla-service/calcularplanilla-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/config-service/config-service.iml" filepath="$PROJECT_DIR$/config-service/config-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/data-service/data-service.iml" filepath="$PROJECT_DIR$/data-service/data-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/empleado-service/empleado-service.iml" filepath="$PROJECT_DIR$/empleado-service/empleado-service.iml" />

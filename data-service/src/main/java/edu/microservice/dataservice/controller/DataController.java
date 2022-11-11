@@ -42,4 +42,13 @@ public class DataController {
         return ResponseEntity.ok(data);
     }
 
+    @GetMapping("/fechas")
+    @CrossOrigin
+    public ResponseEntity<Date[]> obtenerFechas() {
+        Date[] fechas = dataService.obtenerFechasUnicas();
+        if(fechas == null)
+            return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(fechas);
+    }
+
 }

@@ -19,4 +19,7 @@ public interface HorasextrasRepository extends JpaRepository<HorasextrasEntity, 
     @Query(value = "INSERT INTO horasextras (id_data, rut, cantidad) VALUES (:id_data, :rut, :cantidad)", nativeQuery = true)
     void ingresarHorasExtras(@Param("id_data") Long id_data, @Param("rut") String rut, @Param("cantidad") Integer cantidad);
 
+    @Query(value = "SELECT sum(cantidad) FROM horasextras WHERE rut=:rut", nativeQuery = true)
+    Integer sumHorasExtras(@Param("rut") String rut);
+
 }

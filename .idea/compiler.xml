@@ -14,9 +14,11 @@
         <module name="data-service" />
         <module name="empleado-service" />
         <module name="justificativo-service" />
+        <module name="calcularplanilla-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="calcularplanilla-service" target="14" />
       <module name="config-service" target="11" />
       <module name="data" target="17" />
       <module name="data-service" target="11" />
@@ -32,6 +34,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="calcularplanilla-service" options="-parameters" />
       <module name="config-service" options="-parameters" />
       <module name="data" options="-parameters" />
       <module name="data-service" options="-parameters" />

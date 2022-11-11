@@ -13,6 +13,13 @@ public class JustificativoController {
     @Autowired
     JustificativoService justificativoService;
 
+    @GetMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity<JustificativoEntity> getJustificativo(@PathVariable("id") Long id){
+        JustificativoEntity justificativo = justificativoService.getJustificativo(id);
+        if(justificativo == null) return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(justificativo);
+    }
     @PostMapping
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<JustificativoEntity> ingresarJustificativo(@RequestParam String fecha, @RequestParam String rut){

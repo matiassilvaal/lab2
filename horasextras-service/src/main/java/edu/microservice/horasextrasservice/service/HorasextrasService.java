@@ -38,6 +38,10 @@ public class HorasextrasService {
         int diferencia = info.getHora().getHours()-Time.valueOf("18:00:00").getHours();
         return Math.max(diferencia, 0);
     }
+
+    public Integer obtenerSumaHorasExtras(String rut){
+        return horasextrasRepository.sumHorasExtras(rut);
+    }
 }
 
 

@@ -16,11 +16,12 @@ public class HorasextrasController {
     @Autowired
     HorasextrasService horasextrasService;
 
-    @GetMapping
+    @GetMapping("/suma/{rut}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<List<HorasextrasEntity>> getAll(){
-        if(horasextrasService.getAll().isEmpty()) return ResponseEntity.noContent().build();
-        return ResponseEntity.ok(horasextrasService.getAll());
+    public ResponseEntity<Integer> obtenerSumaHorasExtras(String rut){
+        Integer suma = horasextrasService.obtenerSumaHorasExtras(rut);
+        if(suma == null) return ResponseEntity.ok(0);
+        return ResponseEntity.ok(suma);
     }
 
     @PostMapping
