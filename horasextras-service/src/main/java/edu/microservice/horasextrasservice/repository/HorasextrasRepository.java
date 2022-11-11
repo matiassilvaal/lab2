@@ -8,12 +8,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 
 
 @Repository
 public interface HorasextrasRepository extends JpaRepository<HorasextrasEntity, Long> {
     HorasextrasEntity findByRutAndIdData(String rut, Long idData);
-
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO horasextras (id_data, rut, cantidad) VALUES (:id_data, :rut, :cantidad)", nativeQuery = true)

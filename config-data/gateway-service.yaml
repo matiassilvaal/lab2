@@ -27,3 +27,7 @@ spring:
           uri: lb://justificativo-service
           predicates:
             - Path=/justificativo/**
+        - id: horasextras-service
+          uri: lb://horasextras-service
+          predicates:
+            - Path=/horasextras/**

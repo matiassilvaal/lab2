@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/justificativo")
+@RequestMapping("/horasextras")
 public class HorasextrasController {
     @Autowired
     HorasextrasService horasextrasService;
@@ -19,10 +19,11 @@ public class HorasextrasController {
     @GetMapping
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<List<HorasextrasEntity>> getAll(){
-        return ResponseEntity.ok().body(horasextrasService.getAll());
+        if(horasextrasService.getAll().isEmpty()) return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(horasextrasService.getAll());
     }
 
-    @PostMapping("/horasextras")
+    @PostMapping
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<HorasextrasEntity> ingresarHorasExtras(@RequestParam String fecha, @RequestParam String rut){
         if(!fecha.isBlank() && !rut.isBlank()) {
