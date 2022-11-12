@@ -4,11 +4,11 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://localhost:8081
+      uri: http://config-service:8081
   datasource:
-    url: jdbc:mysql://localhost:3306/lab2empleados
-    username: root
-    password: Leche0123456!
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update

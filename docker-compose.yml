@@ -1,0 +1,122 @@
+version: "3.8"
+services:
+  config-service:
+    container_name: config-service
+    image: matiassilvaal/config-service:latest
+    ports:
+      - "8081:8081"
+  eureka-service:
+    container_name: eureka-service
+    image: matiassilvaal/eureka-service:latest
+    ports:
+      - "8761:8761"
+    depends_on:
+      - config-service
+  gateway-service:
+    container_name: gateway-service
+    image: matiassilvaal/gateway-service:latest
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka-service:8761/eureka/
+    depends_on:
+      - eureka-service
+    links:
+      - eureka-service
+  empleado-service:
+    container_name: empleado-service
+    image: matiassilvaal/empleado-service:latest
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka-service:8761/eureka/
+      - DB_URL=jdbc:mysql://mysql-db:3306/lab2empleados?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
+      - DB_USERNAME=root
+      - DB_PASSWORD=Leche0123456!
+    deploy:
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - eureka-service
+      - gateway-service
+      - mysql-db
+    links:
+      - eureka-service
+  data-service:
+    container_name: data-service
+    image: matiassilvaal/data-service:latest
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka-service:8761/eureka/
+      - DB_URL=jdbc:mysql://mysql-db:3306/lab2data?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
+      - DB_USERNAME=root
+      - DB_PASSWORD=Leche0123456!
+    deploy:
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - eureka-service
+      - gateway-service
+      - mysql-db
+    links:
+      - eureka-service
+  justificativo-service:
+    container_name: justificativo-service
+    image: matiassilvaal/justificativo-service:latest
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka-service:8761/eureka/
+      - DB_URL=jdbc:mysql://mysql-db:3306/lab2justificativos?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
+      - DB_USERNAME=root
+      - DB_PASSWORD=Leche0123456!
+    deploy:
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - eureka-service
+      - gateway-service
+      - mysql-db
+    links:
+      - eureka-service
+  horasextras-service:
+    container_name: horasextras-service
+    image: matiassilvaal/horasextras-service:latest
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka-service:8761/eureka/
+      - DB_URL=jdbc:mysql://mysql-db:3306/lab2horasextras?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
+      - DB_USERNAME=root
+      - DB_PASSWORD=Leche0123456!
+    deploy:
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - eureka-service
+      - gateway-service
+      - mysql-db
+    links:
+      - eureka-service
+  calcularplanilla-service:
+    container_name: calcularplanilla-service
+    image: matiassilvaal/calcularplanilla-service:latest
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka-service:8761/eureka/
+      - DB_URL=jdbc:mysql://mysql-db:3306/lab2calcularplanilla?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
+      - DB_USERNAME=root
+      - DB_PASSWORD=Leche0123456!
+    deploy:
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - eureka-service
+      - gateway-service
+      - mysql-db
+    links:
+      - eureka-service
+  mysql-db: # Nombre de contenedor MYSQL
+    image: mysql
+    command: --secure-file-priv="" # Permite importar archivos CSV
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Leche0123456!
+      MYSQL_DATABASE: lab2empleados
+    ports:
+      - 33060:3306
+  
+  # bd-1
+  # bd-2
