@@ -1,8 +1,9 @@
-start /D config-service mvnw clean package -f pom.xml
-start /D eureka-service mvnw clean package -f pom.xml
-start /D gateway-service mvnw clean package -f pom.xml
-start /D data-service mvnw clean package -f pom.xml
-start /D empleado-service mvnw clean package -f pom.xml
-start /D justificativo-service mvnw clean package -f pom.xml
-start /D horasextras-service mvnw clean package -f pom.xml
-start /D calcularplanilla-service mvnw clean package -f pom.xml
+start /wait /D config-service mvnw clean package -f pom.xml
+start /wait /D eureka-service mvnw clean package -f pom.xml
+start /wait /D gateway-service mvnw clean package -f pom.xml
+start /wait /D data-service mvnw clean package -f pom.xml
+start /wait /D empleado-service mvnw clean package -f pom.xml
+start /wait /D justificativo-service mvnw clean package -f pom.xml
+start /wait /D horasextras-service mvnw clean package -f pom.xml
+start /wait /D calcularplanilla-service mvnw clean package -f pom.xml
+start /wait /D mostrarplanilla-service mvnw clean package -f pom.xml

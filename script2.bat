@@ -6,3 +6,4 @@ docker build -f empleado-service/Dockerfile -t matiassilvaal/empleado-service:la
 docker build -f justificativo-service/Dockerfile -t matiassilvaal/justificativo-service:latest ./justificativo-service
 docker build -f horasextras-service/Dockerfile -t matiassilvaal/horasextras-service:latest ./horasextras-service
 docker build -f calcularplanilla-service/Dockerfile -t matiassilvaal/calcularplanilla-service:latest ./calcularplanilla-service
+docker build -f mostrarplanilla-service/Dockerfile -t matiassilvaal/mostrarplanilla-service:latest ./mostrarplanilla-service
