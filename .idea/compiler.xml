@@ -13,6 +13,7 @@
         <module name="horasextras-service" />
         <module name="data-service" />
         <module name="empleado-service" />
+        <module name="mostrarplanilla-service" />
         <module name="justificativo-service" />
         <module name="calcularplanilla-service" />
       </profile>
@@ -30,6 +31,7 @@
       <module name="importar-service" target="11" />
       <module name="justificativo" target="17" />
       <module name="justificativo-service" target="11" />
+      <module name="mostrarplanilla-service" target="14" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -46,6 +48,7 @@
       <module name="importar-service" options="-parameters" />
       <module name="justificativo" options="-parameters" />
       <module name="justificativo-service" options="-parameters" />
+      <module name="mostrarplanilla-service" options="-parameters" />
     </option>
   </component>
 </project>

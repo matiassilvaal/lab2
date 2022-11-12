@@ -108,6 +108,23 @@ services:
       - mysql-db
     links:
       - eureka-service
+  mostrarplanilla-service:
+    container_name: mostrarplanilla-service
+    image: matiassilvaal/mostrarplanilla-service:latest
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka-service:8761/eureka/
+      - DB_URL=jdbc:mysql://mysql-db:3306/lab2mostrarplanilla?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
+      - DB_USERNAME=root
+      - DB_PASSWORD=Leche0123456!
+    deploy:
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - eureka-service
+      - gateway-service
+      - mysql-db
+    links:
+      - eureka-service
   mysql-db: # Nombre de contenedor MYSQL
     image: mysql
     command: --secure-file-priv="" # Permite importar archivos CSV
@@ -116,7 +133,6 @@ services:
       - ./data/db:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: Leche0123456!
-      MYSQL_DATABASE: lab2empleados
     ports:
       - 33060:3306
 
