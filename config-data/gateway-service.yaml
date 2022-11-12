@@ -35,3 +35,7 @@ spring:
           uri: lb://calcularplanilla-service
           predicates:
             - Path=/calcularplanilla/**
+        - id: mostrarplanilla-service
+          uri: lb://mostrarplanilla-service
+          predicates:
+            - Path=/mostrarplanilla/**

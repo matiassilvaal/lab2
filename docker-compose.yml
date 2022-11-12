@@ -20,7 +20,14 @@ services:
     ports:
       - "8080:8080"
     depends_on:
+      - config-service
       - eureka-service
+      - data-service
+      - empleado-service
+      - justificativo-service
+      - horasextras-service
+      - calcularplanilla-service
+      - mostrarplanilla-service
     links:
       - eureka-service
   empleado-service:
@@ -36,7 +43,6 @@ services:
         condition: on-failure
     depends_on:
       - eureka-service
-      - gateway-service
       - mysql-db
     links:
       - eureka-service
@@ -53,7 +59,6 @@ services:
         condition: on-failure
     depends_on:
       - eureka-service
-      - gateway-service
       - mysql-db
     links:
       - eureka-service
@@ -70,7 +75,6 @@ services:
         condition: on-failure
     depends_on:
       - eureka-service
-      - gateway-service
       - mysql-db
     links:
       - eureka-service
@@ -87,7 +91,6 @@ services:
         condition: on-failure
     depends_on:
       - eureka-service
-      - gateway-service
       - mysql-db
     links:
       - eureka-service
@@ -104,7 +107,6 @@ services:
         condition: on-failure
     depends_on:
       - eureka-service
-      - gateway-service
       - mysql-db
     links:
       - eureka-service
@@ -121,7 +123,6 @@ services:
         condition: on-failure
     depends_on:
       - eureka-service
-      - gateway-service
       - mysql-db
     links:
       - eureka-service
