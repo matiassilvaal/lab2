@@ -23,7 +23,7 @@ public class HorasextrasService {
     public List<HorasextrasEntity> getAll(){
         return horasextrasRepository.findAll();
     }
-    public Boolean ingresarHorasExtras(Date fecha, String rut){
+    public Boolean ingresarHorasExtras(String fecha, String rut){
         Data info = restTemplate.getForObject("http://data-service/data/salida/" + rut + "/" + fecha, Data.class);
         if(info == null) return false;
         Integer calculo = calcularSiHorasExtras(info, rut);

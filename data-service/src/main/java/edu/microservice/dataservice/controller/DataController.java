@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.util.List;
 
 @SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/data")
 public class DataController {
@@ -17,7 +18,6 @@ public class DataController {
     DataService dataService;
 
     @PostMapping
-    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<DataEntity> uploadFile() {
         if(dataService.readDataFromFile())
             return ResponseEntity.ok().build();
@@ -25,7 +25,6 @@ public class DataController {
     }
 
     @GetMapping
-    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<List<DataEntity>> importar() {
         List<DataEntity> data = dataService.obtenerData();
         if(data.isEmpty())
@@ -34,12 +33,32 @@ public class DataController {
     }
 
     @GetMapping("/entrada/{rut}/{fecha}")
-    @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<DataEntity> encontrarEntrada(@PathVariable("rut") String rut, @PathVariable("fecha") String fecha) {
-        DataEntity data = dataService.encontrarEntrada(rut, Date.valueOf(fecha));
+    public DataEntity encontrarEntrada(@PathVariable("rut") String rut, @PathVariable("fecha") String fecha) {
+        Date date;
+        try{
+            date = Date.valueOf(fecha);
+        }
+        catch (IllegalArgumentException e){
+            return null;
+        }
+        DataEntity data = dataService.encontrarEntrada(rut, date);
         if(data == null)
-            return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(data);
+            return null;
+        return data;
+    }
+    @GetMapping("/salida/{rut}/{fecha}")
+    public DataEntity encontrarSalida(@PathVariable("rut") String rut, @PathVariable("fecha") String fecha) {
+        Date date;
+        try{
+            date = Date.valueOf(fecha);
+        }
+        catch (IllegalArgumentException e){
+            return null;
+        }
+        DataEntity data = dataService.encontrarSalida(rut, date);
+        if(data == null)
+            return null;
+        return data;
     }
 
     @GetMapping("/fechas")

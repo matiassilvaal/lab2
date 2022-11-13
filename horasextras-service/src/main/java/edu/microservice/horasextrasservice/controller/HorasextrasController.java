@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.util.List;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/horasextras")
 public class HorasextrasController {
@@ -17,7 +17,6 @@ public class HorasextrasController {
     HorasextrasService horasextrasService;
 
     @GetMapping("/suma/{rut}")
-    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Integer> obtenerSumaHorasExtras(String rut){
         Integer suma = horasextrasService.obtenerSumaHorasExtras(rut);
         if(suma == null) return ResponseEntity.ok(0);
@@ -25,12 +24,12 @@ public class HorasextrasController {
     }
 
     @PostMapping
-    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<HorasextrasEntity> ingresarHorasExtras(@RequestParam String fecha, @RequestParam String rut){
+        System.out.println("fecha: " + fecha + " rut: " + rut);
         if(!fecha.isBlank() && !rut.isBlank()) {
-            if (horasextrasService.ingresarHorasExtras(Date.valueOf(fecha), rut))
+            if (horasextrasService.ingresarHorasExtras(fecha, rut))
                 return ResponseEntity.ok().build();
-            return ResponseEntity.internalServerError().build();
+            return ResponseEntity.notFound().build();
         }
         return ResponseEntity.badRequest().build();
     }

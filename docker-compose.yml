@@ -136,6 +136,11 @@ services:
       MYSQL_ROOT_PASSWORD: Leche0123456!
     ports:
       - 33060:3306
+  react-app:
+    container_name: react-app
+    image: matiassilvaal/frontend-lab2:latest
+    ports:
+      - "3000:3000"
 
   # bd-1
   # bd-2

@@ -57,9 +57,6 @@ public class DataService {
         return dataRepository.findSalida(fecha, rut);
     }
 
-    public void ingresarJustificativo(String rut, Date fecha) {
-        dataRepository.updateJustificativo(rut, fecha);
-    }
 
     /*public void ingresarHorasExtras(String rut, Date fecha, Integer horas) {
         dataRepository.updateHorasExtras(rut, fecha, horas);

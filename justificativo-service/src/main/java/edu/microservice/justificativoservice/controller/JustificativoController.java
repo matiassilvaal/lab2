@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/justificativo")
 public class JustificativoController {
@@ -14,17 +14,19 @@ public class JustificativoController {
     JustificativoService justificativoService;
 
     @GetMapping("/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<JustificativoEntity> getJustificativo(@PathVariable("id") Long id){
         JustificativoEntity justificativo = justificativoService.getJustificativo(id);
         if(justificativo == null) return ResponseEntity.noContent().build();
         return ResponseEntity.ok(justificativo);
     }
+
     @PostMapping
-    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<JustificativoEntity> ingresarJustificativo(@RequestParam String fecha, @RequestParam String rut){
-        if(justificativoService.ingresarJustificativo(fecha, rut))
-            return ResponseEntity.ok().build();
-        return ResponseEntity.internalServerError().build();
+        if(!fecha.isBlank() && !rut.isBlank()) {
+            if (justificativoService.ingresarJustificativo(fecha, rut))
+                return ResponseEntity.ok().build();
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.badRequest().build();
     }
 }

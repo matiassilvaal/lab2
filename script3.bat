@@ -1,0 +1,9 @@
+docker push matiassilvaal/config-service:latest
+docker push matiassilvaal/eureka-service:latest
+docker push matiassilvaal/gateway-service:latest
+docker push matiassilvaal/data-service:latest
+docker push matiassilvaal/empleado-service:latest
+docker push matiassilvaal/justificativo-service:latest
+docker push matiassilvaal/horasextras-service:latest
+docker push matiassilvaal/calcularplanilla-service:latest
+docker push matiassilvaal/mostrarplanilla-service:latest
