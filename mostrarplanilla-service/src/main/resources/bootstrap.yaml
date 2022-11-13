@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: mostrarplanilla-service
+  cloud:
+    config:
+      enabled: true
+      uri: http://config-service:8081
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
