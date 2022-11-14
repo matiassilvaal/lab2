@@ -140,7 +140,20 @@ services:
     container_name: react-app
     image: matiassilvaal/frontend-lab2:latest
     ports:
+      - "3001:3001"
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+        - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    ports:
       - "3000:3000"
-
+    volumes:
+      - ./grafana-storage:/var/lib/grafana
   # bd-1
   # bd-2

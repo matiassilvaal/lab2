@@ -1,0 +1,58 @@
+# my global config
+global:
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+# - "first_rules.yml"
+# - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+  - job_name: "gateway actuator"
+    metrics_path: "/actuator/prometheus"
+    static_configs:
+      - targets: ["gateway-service:8080"]
+  - job_name: "empleado actuator"
+    metrics_path: "/EMPLEADO-SERVICE/actuator/prometheus"
+    static_configs:
+      - targets: ["gateway-service:8080"]
+
+  - job_name: "data actuator"
+    metrics_path: "/DATA-SERVICE/actuator/prometheus"
+    static_configs:
+      - targets: ["gateway-service:8080"]
+
+  - job_name: "justificativo actuator"
+    metrics_path: "/JUSTIFICATIVO-SERVICE/actuator/prometheus"
+    static_configs:
+      - targets: ["gateway-service:8080"]
+
+  - job_name: "horas extras actuator"
+    metrics_path: "/HORASEXTRAS-SERVICE/actuator/prometheus"
+    static_configs:
+      - targets: ["gateway-service:8080"]
+
+  - job_name: "calcular planilla actuator"
+    metrics_path: "/CALCULARPLANILLA-SERVICE/actuator/prometheus"
+    static_configs:
+      - targets: ["gateway-service:8080"]
+
+  - job_name: "mostrar planilla actuator"
+    metrics_path: "/MOSTRARPLANILLA-SERVICE/actuator/prometheus"
+    static_configs:
+      - targets: ["gateway-service:8080"]
