@@ -20,3 +20,8 @@ spring:
             allowedMethods:
               - GET
               - POST
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

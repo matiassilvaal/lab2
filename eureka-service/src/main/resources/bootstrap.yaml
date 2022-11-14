@@ -11,4 +11,8 @@ spring:
         initial-interval: 1000
         multiplier: 1.5
         max-interval: 5000
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
