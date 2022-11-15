@@ -1,11 +1,9 @@
 package edu.microservice.calcularplanillaservice.model;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 public class UserInfo implements Serializable {
 
-    @Serial
     private static final long serialVersionUID = 1L;
 
     private String usuario;
@@ -21,8 +19,16 @@ public class UserInfo implements Serializable {
         return usuario;
     }
 
+    public void setUsuario(String username) {
+        this.usuario = usuario;
+    }
+
     public String getClave() {
         return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
 }
