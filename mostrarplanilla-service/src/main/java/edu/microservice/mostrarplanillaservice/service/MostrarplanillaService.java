@@ -4,12 +4,11 @@ package edu.microservice.mostrarplanillaservice.service;
 import edu.microservice.mostrarplanillaservice.entity.MostrarplanillaEntity;
 import edu.microservice.mostrarplanillaservice.repository.MostrarplanillaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 
-import java.sql.Date;
-import java.sql.Time;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,10 +21,12 @@ public class MostrarplanillaService {
     @Autowired
     MostrarplanillaRepository mostrarplanillaRepository;
 
-    public List<MostrarplanillaEntity> getAll(){
+    public List<MostrarplanillaEntity> getAll(String bearerToken){
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", bearerToken);
         mostrarplanillaRepository.deleteAll();
-        MostrarplanillaEntity[] mostrarplanillaEntities = restTemplate.getForObject("http://calcularplanilla-service/calcularplanilla", MostrarplanillaEntity[].class);
-        List<MostrarplanillaEntity> mostrarplanillaEntityList = Arrays.asList(mostrarplanillaEntities);
+        ResponseEntity<MostrarplanillaEntity[]> mostrarplanillaEntities = restTemplate.exchange("http://calcularplanilla-service/calcularplanilla", HttpMethod.GET, new HttpEntity<>("parameters", headers), MostrarplanillaEntity[].class);
+        List<MostrarplanillaEntity> mostrarplanillaEntityList = Arrays.asList(mostrarplanillaEntities.getBody());
         mostrarplanillaRepository.saveAll(mostrarplanillaEntityList);
         return mostrarplanillaRepository.findAll();
     }

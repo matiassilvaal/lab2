@@ -6,10 +6,7 @@ import edu.microservice.mostrarplanillaservice.entity.MostrarplanillaEntity;
 import edu.microservice.mostrarplanillaservice.service.MostrarplanillaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,9 +19,9 @@ public class MostrarplanillaController {
     MostrarplanillaService mostrarplanillaService;
 
     @GetMapping
-    public ResponseEntity<List<MostrarplanillaEntity>> getAll(){
-        if(mostrarplanillaService.getAll().isEmpty()) return ResponseEntity.noContent().build();
-        return ResponseEntity.ok(mostrarplanillaService.getAll());
+    public ResponseEntity<List<MostrarplanillaEntity>> getAll(@RequestHeader("Authorization") String bearerToken){
+        if(mostrarplanillaService.getAll(bearerToken).isEmpty()) return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(mostrarplanillaService.getAll(bearerToken));
     }
 
 }

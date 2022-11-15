@@ -8,7 +8,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 @SpringBootApplication
 public class HorasextrasServiceApplication {
@@ -20,7 +19,7 @@ public class HorasextrasServiceApplication {
 	public CorsFilter corsFilter() {
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		final CorsConfiguration config = new CorsConfiguration();
-		config.setAllowedOrigins(Arrays.asList("http://localhost:3000")); // Provide list of origins if you want multiple origins
+		config.setAllowedOrigins(Arrays.asList("http://localhost:3001")); // Provide list of origins if you want multiple origins
 		config.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept"));
 		config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH"));
 		config.setAllowCredentials(true);
